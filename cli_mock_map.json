@@ -7,6 +7,12 @@
         {
             "input": [ "/var/log" ],
             "output": "syslog\nlastlog\nsecure.log"
+        },
+        {
+            "input": ["/tmp"],
+            "output": {
+                "file": "/var/log/alternatives.log"
+            }
         }
     ]
 }

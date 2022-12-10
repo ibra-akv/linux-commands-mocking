@@ -1,9 +1,14 @@
-FROM ubuntu:18.04
-RUN apt update
-RUN apt install -y python3
+FROM python:3.8
+
 RUN mkdir -p /usr/local/climate/
-COPY CLImate.py /usr/local/climate/
-COPY CLImate_mocks.json /usr/local/climate/
-RUN ln -s /usr/local/climate/CLImate.py /usr/local/climate/ls 
-RUN ln -s /usr/local/climate/CLImate.py /usr/local/climate/pwd
+
+COPY cli_mocker.py /usr/local/climate/
+COPY cli_mock_map.json /usr/local/climate/
+COPY symlinker.py /usr/local/climate/
+
 ENV PATH="/usr/local/climate/:${PATH}"
+
+COPY startup.sh /
+RUN chmod +x /startup.sh
+
+ENTRYPOINT ["/startup.sh"]

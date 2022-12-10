@@ -1,0 +1,7 @@
+version: '3'
+services:
+  py3:
+    container_name: python3_container
+    build: .
+    image: linux-commands-mocking
+    command: /bin/bash
