@@ -1,16 +1,36 @@
-# Project:
+Linux command mocking
+=====================
+> This simple **python** app allows you to mock linux commands for your testing purposes.
 
-"CLImate" stands for Command Line Interface mocking and testing enablement.
+**Warning**  
+The `remote_install.sh` script edits the `$PATH` env var so only use it in docker containers or
+re-edit your `$PATH` back to original value after your done.
 
-The idea is to enable simple mocking of Linux system commands.
-The CLImate.py application reads the CLImate\_mocks.json file, which contains mock configuration and is simply defined as "if input params == input" => show "output".
+## Usage
 
-The applications that need to be mocked ought to be created as symlinks in /usr/local/climate and point to CLImate.py e.g. ln -s /usr/local/climate/CLImate.py /usr/local/climate/ls
-The docker image has a modified environment, so that /usr/local/climate/ is prepended to PATH.
+cli_mock_map.json:
+```json
+{
+    "ls": [
+        {
+            "input": [ "/home/user" ],
+            "output": "list.py                 file.boot"
+        },
+        {
+            "input": [ "/var/log" ],
+            "output": "syslog\nlastlog\nsecure.log"
+        },
+        {
+            "input": ["/tmp"],
+            "output": {
+                "file": "/var/log/alternatives.log"
+            }
+        }
+    ]
+}
+```
 
-Whenever the user runs an application, the first directory to check is /usr/local/climate, which allows mocking of system commands such as 'ls' for instance.
+more docs coming soon...
 
-# Usage:
-
-docker build -t "climate:poc" .
-docker run climate:poc ls /home/user
+## Source
+This repo is a fork of [**wacekdziewulski/climate**](https://github.com/wacekdziewulski/climate)
