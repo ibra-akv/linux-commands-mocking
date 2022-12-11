@@ -10,9 +10,9 @@ git clone https://github.com/ibra-akv/linux-commands-mocking.git $TEMP_DIR
 mkdir -p $TARGET_DIR
 
 # copy files
-copy $TEMP_DIR/src/cli_mocker.py $TARGET_DIR/
-copy $TEMP_DIR/src/symlinker.py $TARGET_DIR/
-copy $TEMP_DIR/src/cli_mock_map.json $TARGET_DIR/
+cp $TEMP_DIR/src/cli_mocker.py $TARGET_DIR/
+cp $TEMP_DIR/src/symlinker.py $TARGET_DIR/
+cp $TEMP_DIR/src/cli_mock_map.json $TARGET_DIR/
 
 # permissions
 chmod +x $TARGET_DIR/cli_mocker.py
