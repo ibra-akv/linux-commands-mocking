@@ -21,5 +21,4 @@ chmod +x $TARGET_DIR/symlinker.py
 python3 $TARGET_DIR/symlinker.py --mock-map-file=$TARGET_DIR/cli_mock_map.json --mock-dir=$TARGET_DIR
 
 # modifying $PATH env var so that for each linux command executed, $TARGET_DIR is checked first
-export PATH="$TARGET_DIR:$PATH"
 echo "export PATH=$TARGET_DIR:$PATH" >> /root/.bashrc
